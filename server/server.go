@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/graphql-gopher/database"
 	"log"
 	"net/http"
 	"os"
@@ -11,6 +12,10 @@ import (
 const defaultPort = "8080"
 
 func main() {
+	err, _ := database.SingleDBMongo()
+	if err != nil {
+		panic(err)
+	}
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = defaultPort
