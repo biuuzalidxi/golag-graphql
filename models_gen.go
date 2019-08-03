@@ -7,6 +7,11 @@ type NewTodo struct {
 	UserID string `json:"userId"`
 }
 
+type NewUser struct {
+	ID   string `json:"id"`
+	Name string `json:"name"`
+}
+
 type Todo struct {
 	ID   string `json:"id"`
 	Text string `json:"text"`
@@ -16,10 +21,5 @@ type Todo struct {
 
 type User struct {
 	ID   string `json:"id"`
-	Name string `json:"name"`
-}
-
-type NewUser struct {
-	ID string `json:"id"`
 	Name string `json:"name"`
 }

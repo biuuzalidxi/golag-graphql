@@ -10,7 +10,7 @@ var DB *mongo.Database
 
 func Connect()(error,*mongo.Client){
 	// Set client options
-	clientOptions := options.Client().ApplyURI("mongodb+srv://admin:<password>@golang-jfmqy.mongodb.net/test?retryWrites=true&w=majority")
+	clientOptions := options.Client().ApplyURI("mongodb+srv://admin:admin@golang-jfmqy.mongodb.net/test?retryWrites=true&w=majority")
 	// Connect to MongoDB
 	client, err := mongo.Connect(context.TODO(), clientOptions)
 	if err != nil {
@@ -29,12 +29,12 @@ func GetDatabaseConnection()(error,*mongo.Database){
 	if err != nil {
 		return err,nil
 	}
-	DB := cliente.Database("golang")
+	DB = cliente.Database("golang")
 	return nil, DB
 }
 
 func SingleDBMongo()(error,*mongo.Database){
-	if DB != nil {
+	if DB == nil {
 		err,_ := GetDatabaseConnection()
 		if err != nil {
 			return err, nil
